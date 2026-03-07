@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ config.title }}</title>
+    <meta name="description" content="{{ config.description }}" />
+    <style>
+      :root {
+        --bg: #f9fafb;
+        --text: #111111;
+        --muted: #666666;
+        --max: 42rem;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.5;
+      }
+
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.05;
+        margin: 0 0 0.5rem;
+      }
+
+      .desc {
+        color: var(--muted);
+        margin: 0 0 2rem;
+      }
+
+      .posts {
+        display: grid;
+        gap: 2rem;
+      }
+
+      article h2 {
+        font-size: 1.25rem;
+        line-height: 1.15;
+        margin: 0 0 0.35rem;
+      }
+
+      article p {
+        margin: 0 0 0.4rem;
+        color: var(--muted);
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover h2 {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>{{ config.title }}</h1>
+      <p class="desc">{{ config.description }}</p>
+
+      <div class="posts">
+        {% set posts = get_section(path="post/_index.md") %}
+        {% for page in posts.pages %}
+          <article>
+            <a href="{{ page.permalink }}">
+              <h2>{{ page.title }}</h2>
+              {% if page.description %}
+                <p>{{ page.description }}</p>
+              {% endif %}
+              <div class="meta">{{ page.date | date(format="%b %d, %Y") }}</div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+</html>

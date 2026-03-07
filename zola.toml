@@ -1,0 +1,10 @@
+base_url = "https://daryl.cc"
+title = "Daryl Wolfe"
+description = "This site documents how branding functions as infrastructure in the real world."
+default_language = "en"
+
+compile_sass = false
+build_search_index = false
+
+generate_feeds = false
+minify_html = true

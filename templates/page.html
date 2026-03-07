@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title }} · {{ config.title }}</title>
+    <meta name="description" content="{{ page.description | default(value=config.description) }}" />
+    <style>
+      :root {
+        --bg: #f9fafb;
+        --text: #111111;
+        --muted: #666666;
+        --max: 42rem;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.7;
+      }
+
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 2rem 1.25rem 4rem;
+      }
+
+      .back {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .back:hover {
+        text-decoration: underline;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.05;
+        margin: 0 0 0.5rem;
+      }
+
+      .desc {
+        color: var(--muted);
+        margin: 0 0 0.5rem;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+
+      .content p {
+        margin: 0 0 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/">← Index</a>
+
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="desc">{{ page.description }}</p>
+      {% endif %}
+      <div class="meta">{{ page.date | date(format="%b %d, %Y") }}</div>
+
+      <div class="content">
+        {{ page.content | safe }}
+      </div>
+    </main>
+  </body>
+</html>
