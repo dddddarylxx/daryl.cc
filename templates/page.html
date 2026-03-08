@@ -5,34 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ page.title }} · {{ config.title }}</title>
     <meta name="description" content="{{ page.description | default(value=config.description) }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Zilla+Slab:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       :root {
         --bg: #f9fafb;
         --text: #111111;
         --muted: #666666;
-        --max: 42rem;
+        --max: 44rem;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
         background: var(--bg);
         color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family: "Zilla Slab", Georgia, serif;
         line-height: 1.7;
       }
 
       main {
         max-width: var(--max);
         margin: 0 auto;
-        padding: 2rem 1.25rem 4rem;
+        padding: 4.5rem 1.25rem 4rem;
       }
 
       .back {
         display: inline-block;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
         color: var(--muted);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
       }
 
@@ -41,24 +54,36 @@
       }
 
       h1 {
-        font-size: 2rem;
-        line-height: 1.05;
-        margin: 0 0 0.5rem;
+        margin: 0 0 0.75rem;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: -0.04em;
       }
 
       .desc {
-        color: var(--muted);
+        max-width: 36rem;
         margin: 0 0 0.5rem;
+        color: var(--muted);
+        font-size: 1.05rem;
       }
 
       .meta {
-        color: var(--muted);
-        font-size: 0.95rem;
         margin-bottom: 2rem;
+        color: var(--muted);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
       }
 
       .content p {
         margin: 0 0 1.2rem;
+        font-size: 1.08rem;
+      }
+
+      .content strong {
+        font-weight: 500;
       }
     </style>
   </head>
