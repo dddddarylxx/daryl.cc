@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    dw monogram: 5 squares arranged as a descending staircase
+    Each square is 16x16 with 2px gaps
+    Pattern steps down-left from top-right, forming the 'd' stem
+    and 'w' valley shape
+  -->
+  <!-- Square 1: bottom-left -->
+  <rect x="2" y="38" width="16" height="16" rx="1" fill="#F0ECE5"/>
+  <!-- Square 2: middle-left -->
+  <rect x="20" y="38" width="16" height="16" rx="1" fill="#F0ECE5"/>
+  <!-- Square 3: center -->
+  <rect x="20" y="20" width="16" height="16" rx="1" fill="#F0ECE5"/>
+  <!-- Square 4: middle-right -->
+  <rect x="38" y="20" width="16" height="16" rx="1" fill="#F0ECE5"/>
+  <!-- Square 5: top-right -->
+  <rect x="38" y="2" width="16" height="16" rx="1" fill="#F0ECE5"/>
+</svg>
