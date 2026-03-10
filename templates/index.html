@@ -1,120 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ config.title }}</title>
-    <meta name="description" content="{{ config.description }}" />
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Public+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+{% block title %}{{ config.title }}{% endblock title %}
+{% block description %}{{ config.description }}{% endblock description %}
 
-    <style>
-      :root {
-        --bg: #EDF6F9;
-        --text: #111111;
-        --muted: #666666;
-        --max: 38rem;
-      }
+{% block extra_head %}
+<style>
+  :root {
+    --bg: #EDF6F9;
+    --text: #111111;
+    --muted: #666666;
+    --max: 38rem;
+  }
 
-      * {
-        box-sizing: border-box;
-      }
+  * {
+    box-sizing: border-box;
+  }
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.55;
-      }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.55;
+  }
 
-      main {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 4.75rem 1.25rem 4.5rem;
-      }
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4.75rem 1.25rem 4.5rem;
+  }
 
-      h1 {
-        margin: 0 0 0.9rem;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 3.25rem;
-        font-weight: 800;
-        line-height: 1.02;
-        letter-spacing: -0.045em;
-      }
+  h1 {
+    margin: 0 0 0.9rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
 
-      .desc {
-        max-width: 34rem;
-        margin: 0 0 3.5rem;
-        color: var(--muted);
-        font-size: 1.08rem;
-        font-weight: 500;
-        line-height: 1.5;
-      }
+  .desc {
+    max-width: 34rem;
+    margin: 0 0 3.5rem;
+    color: var(--muted);
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
 
-      .posts {
-        display: grid;
-        gap: 3.5rem;
-      }
+  .posts {
+    display: grid;
+    gap: 3.5rem;
+  }
 
-      article h2 {
-        margin: 0 0 0.5rem;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 1.95rem;
-        font-weight: 700;
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-      }
+  article h2 {
+    margin: 0 0 0.5rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.95rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
 
-      article p {
-        margin: 0 0 0.55rem;
-        color: var(--muted);
-        font-size: 1.08rem;
-        font-weight: 500;
-        line-height: 1.45;
-      }
+  article p {
+    margin: 0 0 0.55rem;
+    color: var(--muted);
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
 
-      .meta {
-        color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 500;
-      }
+  .meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-      a:hover h2 {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
+  a:hover h2 {
+    text-decoration: underline;
+  }
+</style>
+{% endblock extra_head %}
 
-  <body>
-    <main>
-      <h1>{{ config.title }}</h1>
-      <p class="desc">{{ config.description }}</p>
+{% block content %}
+<main>
+  <h1>{{ config.title }}</h1>
+  <p class="desc">{{ config.description }}</p>
 
-      <div class="posts">
-        {% set posts = get_section(path="post/_index.md") %}
-        {% for page in posts.pages %}
-          <article>
-            <a href="{{ page.permalink }}">
-              <h2>{{ page.title }}</h2>
-              {% if page.description %}
-                <p>{{ page.description }}</p>
-              {% endif %}
-              <div class="meta">{{ page.date | date(format="%b %d, %Y") }} · {{ page.reading_time }} min read</div>
-            </a>
-          </article>
-        {% endfor %}
-      </div>
-    </main>
-  </body>
-</html>
+  <div class="posts">
+    {% set posts = get_section(path="post/_index.md") %}
+    {% for page in posts.pages %}
+      <article>
+        <a href="{{ page.permalink }}">
+          <h2>{{ page.title }}</h2>
+          {% if page.description %}
+            <p>{{ page.description }}</p>
+          {% endif %}
+          <div class="meta">{{ page.date | date(format="%b %d, %Y") }} · {{ page.reading_time }} min read</div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</main>
+{% endblock content %}

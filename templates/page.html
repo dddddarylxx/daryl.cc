@@ -1,114 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ page.title }} · {{ config.title }}</title>
-    <meta name="description" content="{{ page.description | default(value=config.description) }}" />
+{% extends "base.html" %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Public+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
 
-    <style>
-      :root {
-        --bg: #EDF6F9;
-        --text: #111111;
-        --muted: #666666;
-        --max: 35rem;
-      }
+{% block extra_head %}
+<style>
+  :root {
+    --bg: #EDF6F9;
+    --text: #111111;
+    --muted: #666666;
+    --max: 35rem;
+  }
 
-      * {
-        box-sizing: border-box;
-      }
+  * {
+    box-sizing: border-box;
+  }
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.7;
-      }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.7;
+  }
 
-      main {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 4.75rem 1.25rem 4.5rem;
-      }
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 4.75rem 1.25rem 4.5rem;
+  }
 
-      .back {
-        display: inline-block;
-        margin-bottom: 2.25rem;
-        color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 500;
-        text-decoration: none;
-      }
+  .back {
+    display: inline-block;
+    margin-bottom: 2.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
 
-      .back:hover {
-        text-decoration: underline;
-      }
+  .back:hover {
+    text-decoration: underline;
+  }
 
-      h1 {
-        margin: 0 0 1.5rem;
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-size: 3.05rem;
-        font-weight: 800;
-        line-height: 1.02;
-        letter-spacing: -0.045em;
-      }
+  h1 {
+    margin: 0 0 1.5rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 3.05rem;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
 
-      .desc {
-        max-width: 32rem;
-        margin: 0 0 1rem;
-        color: var(--muted);
-        font-size: 1.08rem;
-        font-weight: 500;
-        line-height: 1.5;
-      }
+  .desc {
+    max-width: 32rem;
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
 
-      .meta {
-        margin-bottom: 3.6rem;
-        color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 500;
-      }
+  .meta {
+    margin-bottom: 3.6rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
 
-      .content p {
-        margin: 0 0 1.15rem;
-        font-size: 1.42rem;
-        font-weight: 400;
-        line-height: 1.68;
-      }
+  .content p {
+    margin: 0 0 1.15rem;
+    font-size: 1.42rem;
+    font-weight: 400;
+    line-height: 1.68;
+  }
 
-      .content p:first-child {
-        margin-top: 1rem;
-      }
+  .content p:first-child {
+    margin-top: 1rem;
+  }
 
-      .content strong {
-        font-weight: 600;
-      }
-    </style>
-  </head>
+  .content strong {
+    font-weight: 600;
+  }
+</style>
+{% endblock extra_head %}
 
-  <body>
-    <main>
-      <a class="back" href="/">← Index</a>
+{% block content %}
+<main>
+  <a class="back" href="/">← Index</a>
 
-      <h1>{{ page.title }}</h1>
+  <h1>{{ page.title }}</h1>
 
-      {% if page.description %}
-        <p class="desc">{{ page.description }}</p>
-      {% endif %}
+  {% if page.description %}
+    <p class="desc">{{ page.description }}</p>
+  {% endif %}
 
-      <div class="meta">{{ page.date | date(format="%b %d, %Y") }}</div>
+  <div class="meta">{{ page.date | date(format="%b %d, %Y") }}</div>
 
-      <div class="content">
-        {{ page.content | safe }}
-      </div>
-    </main>
-  </body>
-</html>
+  <div class="content">
+    {{ page.content | safe }}
+  </div>
+</main>
+{% endblock content %}
